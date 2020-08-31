@@ -1,0 +1,84 @@
+<link href="https://fonts.googleapis.com/css?family=Srisakdi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Srisakdi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<div class="card">
+    <div class="col-md-6 sell">
+        <h2>Github Search Profile</h2>
+    </div>
+    <div>
+        <div class="container h-100 body">
+            <div class="d-flex justify-content-center h-100">
+              <div class="searchbar">
+                <input class="search_input" type="text" name="" placeholder="Search..."
+                [(ngModel)]="username" name="username" (keyup)="findProfile()">
+                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+              </div>
+            </div>
+          </div> 
+    </div>
+
+    <div class="container-fluid">
+        <div class="jumtron">
+            <div *ngIf="profile">
+                <div class="card">
+
+                    <h1><small>{{profile.login}}</small></h1>
+
+                </div>
+                <div class="row">
+                    <div class="card ">
+                        <div class=" cart">
+                        <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile Image">
+                        <h2 class="list-group-item" *ngIf="profile.bio" style="text-align:center">{{profile.name}}</h2>
+                        <p class="list-group-item" *ngIf="profile.location"><button style="text-align:center">{{profile.location}}</button></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div>
+                            <div class="card">
+                                <p>
+                                    <span class="p-a-05 bg-info text-xs-center">{{profile.followers}}
+                                        Followers</span><br>
+                                    <span class="p-a-05 bg-primary text-xs-center">{{profile.following}}
+                                        Following</span><br>
+                                    <span class="p-a-05 bg-success text-xs-center">{{profile.public_gists}} Public
+                                        gists</span><br>
+                                    <span class="p-a-05 bg-danger text-xs-center">{{profile.public_repos}} Public
+                                        Repos</span>
+                                </p>
+                            </div>
+                            <p><a href="{{profile.html_url}}" target="_ blank" class="btn btn-success btn-sm">View
+                                    profile
+                                    on github</a></p>
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Repos</h3>
+                            </div>
+                            <div class="panel-body" *ngFor="let repo of repos">
+
+                                <div class="container col-sm-10card-columns">
+                                    <div class="card" *ngFor="let repo of repos">
+                                        <div class="card">
+                                            <a href="{{repo.html_url}}" class="text-align-center" target="_blank"
+                                                class="btn btn-outline-primary">View this project on github</a>
+                                            <br>
+                                            <br>
+                                            <div class="card-header text-center">
+                                                <h3 id="rname">{{repo.name}}</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p id="dec">
+                                                    {{repo.description}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
